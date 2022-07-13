@@ -25,8 +25,11 @@ Linux clash或clash-meta 配置-config.yaml 自动更新小脚本，使用前请
 最好不要使用```.zshrc```或者```.bashrc```，会产生打开终端就执行的问题...
 
 具体方法参考
+
 https://www.cnblogs.com/downey-blog/p/10473939.html
+
 https://blog.51cto.com/u_14442495/2905438
+
 https://codeantenna.com/a/wOxb6ZVNrJ
 
 
