@@ -6,21 +6,33 @@ Linux clash或clash-meta 配置-config.yaml 自动更新小脚本，使用前请
 **使用本项目造成的后果需使用者负责。**
 
 
+## 安装
 
 克隆本项目后请移动文件到 ```～/``` （HOME）目录
 
-### 依赖
+#### 依赖
 
 ```pip install pyyaml==5.4.1```
 
 >因为 yaml 库的兼容问题，需要使用 5.4.1，如果不是可以使用 ```pip unstall```
 
+
+
 ### 方式一: 配置开机自动
 
-使用```.zshrc```或者```.bashrc```即可
+-------
+
+最好不要使用```.zshrc```或者```.bashrc```，会产生打开终端就执行的问题...
+
+具体方法参考
+https://www.cnblogs.com/downey-blog/p/10473939.html
+https://blog.51cto.com/u_14442495/2905438
+https://codeantenna.com/a/wOxb6ZVNrJ
 
 
 ### 方式二: 配置定时运行
+
+------
 
 ```
 EDITOR=vim crontab -e
