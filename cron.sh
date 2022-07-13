@@ -1,1 +1,2 @@
+cd ~
 python ~/clash.py

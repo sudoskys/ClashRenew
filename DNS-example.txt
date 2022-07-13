@@ -1,0 +1,22 @@
+# 以下两者选其一即可，主要区别在于增强模式的不同，其中 redir-host 需要 fallback 来处理国外的 DNS 解析，fake-ip 不需要。
+# --------------------------
+dns:
+  enable: true
+  ipv6: false
+  listen: 127.0.0.1:5450
+  enhanced-mode: redir-host
+  nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+  fallback:
+    - 1.1.1.1
+    - 8.8.8.8
+
+dns:
+  enable: true
+  ipv6: false
+  listen: 127.0.0.1:5450
+  enhanced-mode: fake-ip
+  nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
