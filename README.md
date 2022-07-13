@@ -24,7 +24,12 @@ Linux clash或clash-meta 配置-config.yaml 自动更新小脚本，使用前请
 
 最好不要使用```.zshrc```或者```.bashrc```，会产生打开终端就执行的问题...
 
-推荐 ```.bash_profile```  
+推荐 ```.bash_profile```  ，输入
+
+```
+cd ～
+sh cron.sh
+```
 
 - /etc/profile： 每个用户第一次登录时执行
 
