@@ -22,7 +22,12 @@ After cloning the project, please move the files to the ````～/```` (HOME) dire
 
 -------
 
-Use ````.zshrc```` or ````.bashrc```
+It's best not to use ````.zshrc`` or ```.bashrc```, it will cause the problem of executing when the terminal is opened...
+
+Specific method reference
+https://www.cnblogs.com/downey-blog/p/10473939.html
+https://blog.51cto.com/u_14442495/2905438
+https://codeantenna.com/a/wOxb6ZVNrJ
 
 
 ### Method 2: Configure timing operation
