@@ -18,54 +18,63 @@ After cloning the project, please move the files to the ````～/```` (HOME) dire
 
 
 
-### Method 1: Configure automatic startup
+### Configure automatic startup
 
 -------
 
-It's best not to use ```.zshrc`` or ```.bashrc```, it will cause the problem of executing when the terminal is opened...
+It's best not to use ```.zshrc``` or ```.bashrc```, it will cause the problem of executing when the terminal is opened...
 
-```.bash_profile``` is recommended
-
-```
-cd ～
-sh cron.sh
-```
-
-
-- /etc/profile: executed when each user logs in for the first time
-
-- /etc/bashrc: Every time a new terminal is opened, bashrc will be executed
-
-- ~/.bash_profile: dedicated to a certain user, when the user logs in, the file is executed only once
-
-- ~/.bashrc: Personalized terminal, every time a new terminal is opened, bashrc will be executed
-
-
-Reference for other methods
-
-https://www.cnblogs.com/downey-blog/p/10473939.html
-
-https://blog.51cto.com/u_14442495/2905438
-
-https://codeantenna.com/a/wOxb6ZVNrJ
-
-
-### Method 2: Configure timing operation
-
-------
-
+**Run as follows to automatically start crash**
 ````
-EDITOR=vim crontab -e
+systemctl --user enable clash.service
+systemctl --user start clash.service
+systemctl --user status clash.service
 ````
 
-**Enter a scheduled task**
-Do it every five hours (because you're unlikely to have the machine on)
- ````0 */5 * * * /bin/sh ~/cron.sh```
+**copy cron.sh**
+````
+sudo cp ~/cron.sh /usr/local/bin
+````
 
-**View scheduled tasks**
+The misleading tutorial is corrected here, using **login account** instead of full system crash.
+
 ````
-crontab -l
+cd /usr/lib/systemd/user/
+sudo vim clashrenew.service
+
+
 ````
+
+
+**fill in**
+````
+[Unit]
+Description=clashRenew
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-abort
+ExecStart=sh usr/local/bin/cron.sh
+
+[Install]
+WantedBy=default.target
+````
+
+**Start clashrenew program**
+````
+systemctl --user enable clashrenew.service
+systemctl --user start clashrenew.service
+systemctl --user status clashrenew.service
+````
+
+In this way, the user-defined service can be run.
+
+
+*Partial reference to this tutorial*
+https://blog.linioi.com/posts/clash-on-arch/
+
+
 
 
 
