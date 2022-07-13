@@ -28,7 +28,9 @@ Linux clash或clash-meta 配置-config.yaml 自动更新小脚本，使用前请
 
 ```
 cd ～
-sh cron.sh
+
+python ~/clash.py
+
 ```
 
 - /etc/profile： 每个用户第一次登录时执行
