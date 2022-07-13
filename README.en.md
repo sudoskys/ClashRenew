@@ -56,6 +56,7 @@ After=network.target
 Type=simple
 Restart=on-abort
 ExecStart=sh usr/local/bin/cron.sh
+ExecStartPre=/bin/sleep 20
 
 [Install]
 WantedBy=default.target

@@ -56,6 +56,7 @@ After=network.target
 Type=simple
 Restart=on-abort
 ExecStart=sh usr/local/bin/cron.sh
+ExecStartPre=/bin/sleep 20
 
 [Install]
 WantedBy=default.target
@@ -70,6 +71,8 @@ systemctl --user status clashrenew.service
 
 这样用户自定义服务就可以运行起来了
 
+PS:ExecStartPre=/bin/sleep 20 代表延迟20秒，也可以修改clash的服务,使其延迟启动（如果你是无线链接）
+Ps:至于 network ，见https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/systemd-network-targets-and-services_configuring-and-managing-networking
 
 *部分参考此教程*
 https://blog.linioi.com/posts/clash-on-arch/
