@@ -3,7 +3,7 @@
 Linux clash or crash-meta configuration-config.yaml automatically updates the small script, please audit the code before use.
 
 
-**The user is responsible for the consequences of using this item. **
+**The user is responsible for the consequences of using this item.**
 
 
 ## Install
@@ -22,9 +22,15 @@ After cloning the project, please move the files to the ````～/```` (HOME) dire
 
 -------
 
-It's best not to use ````.zshrc`` or ```.bashrc```, it will cause the problem of executing when the terminal is opened...
+It's best not to use ```.zshrc`` or ```.bashrc```, it will cause the problem of executing when the terminal is opened...
 
-````.bash_profile``` is recommended
+```.bash_profile``` is recommended
+
+```
+cd ～
+sh cron.sh
+```
+
 
 - /etc/profile: executed when each user logs in for the first time
 
