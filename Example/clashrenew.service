@@ -1,0 +1,12 @@
+[Unit]
+Description=clashRenew
+After=network-online.target
+
+[Service]
+Type=simple
+Restart=on-abort
+ExecStart=sh /usr/local/bin/cron.sh
+ExecStartPre=/bin/sleep 10
+
+[Install]
+WantedBy=default.target
