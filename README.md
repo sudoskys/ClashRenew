@@ -6,6 +6,9 @@ Linux clash或clash-meta 配置-config.yaml 自动更新小脚本，使用前请
 **使用本项目造成的后果需使用者负责。**
 
 
+
+克隆本项目后请移动文件到 ```～/``` （HOME）目录
+
 ### 依赖
 
 ```pip install pyyaml==5.4.1```
