@@ -18,37 +18,63 @@ Linux clash或clash-meta 配置-config.yaml 自动更新小脚本，使用前请
 
 
 
-### 方式一: 配置开机自动
+### 配置开机自动
 
 -------
 
 最好不要使用```.zshrc```或者```.bashrc```，会产生打开终端就执行的问题...
 
-建议参考此教程的进程管理来实行，不过路径需要修改
+**运行如下来开机自动启动clash**
+```
+systemctl --user enable clash.service
+systemctl --user start clash.service
+systemctl --user status clash.service
+```
+
+**复制cron.sh**
+```
+sudo cp ~/cron.sh  /usr/local/bin
+```
+
+这里修正了教程的误导，采用**登陆账户**，而不是系统全开clash.
+
+```
+cd /usr/lib/systemd/user/
+sudo vim clashrenew.service
+
+
+```
+
+
+**填入**
+```
+[Unit]
+Description=clashRenew
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-abort
+ExecStart=sh usr/local/bin/cron.sh
+
+[Install]
+WantedBy=default.target
+```
+
+**启动 clashrenew 程序**
+```
+systemctl --user enable clashrenew.service
+systemctl --user start clashrenew.service
+systemctl --user status clashrenew.service
+```
+
+这样用户自定义服务就可以运行起来了
+
+
+*部分参考此教程*
 https://blog.linioi.com/posts/clash-on-arch/
 
 
-其他方法参考
-https://blog.51cto.com/u_14442495/2905438
-
-
-
-### 方式二: 配置定时运行
-
-------
-
-```
-EDITOR=vim crontab -e
-```
-
-**输入定时任务**
-每五小时执行一次（因为你不太可能开着机）
- ```0 */5 * * *  /bin/sh ～/cron.sh```
-
-**查看定时任务**
-```
-crontab -l
-```
 
 
 
