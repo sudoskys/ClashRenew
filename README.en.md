@@ -24,7 +24,18 @@ After cloning the project, please move the files to the ````～/```` (HOME) dire
 
 It's best not to use ````.zshrc`` or ```.bashrc```, it will cause the problem of executing when the terminal is opened...
 
-Specific method reference
+````.bash_profile``` is recommended
+
+- /etc/profile: executed when each user logs in for the first time
+
+- /etc/bashrc: Every time a new terminal is opened, bashrc will be executed
+
+- ~/.bash_profile: dedicated to a certain user, when the user logs in, the file is executed only once
+
+- ~/.bashrc: Personalized terminal, every time a new terminal is opened, bashrc will be executed
+
+
+Reference for other methods
 
 https://www.cnblogs.com/downey-blog/p/10473939.html
 

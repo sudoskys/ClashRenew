@@ -24,7 +24,18 @@ Linux clash或clash-meta 配置-config.yaml 自动更新小脚本，使用前请
 
 最好不要使用```.zshrc```或者```.bashrc```，会产生打开终端就执行的问题...
 
-具体方法参考
+推荐 ```.bash_profile```  
+
+- /etc/profile： 每个用户第一次登录时执行
+
+- /etc/bashrc: 每次新开一个终端，都会执行bashrc
+
+- ~/.bash_profile: 某个用户专用,当用户登录时,文件仅仅执行一次
+
+- ~/.bashrc: 个性化终端了,每次新开一个终端，都会执行bashrc
+
+
+其他方法参考
 
 https://www.cnblogs.com/downey-blog/p/10473939.html
 
