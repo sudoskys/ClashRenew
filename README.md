@@ -50,16 +50,17 @@ sudo vim clashrenew.service
 ```
 [Unit]
 Description=clashRenew
-After=network.target
+After=network-online.target
 
 [Service]
 Type=simple
 Restart=on-abort
-ExecStart=sh usr/local/bin/cron.sh
-ExecStartPre=/bin/sleep 20
+ExecStart=sh /usr/local/bin/cron.sh
+ExecStartPre=/bin/sleep 10
 
 [Install]
 WantedBy=default.target
+
 ```
 
 **启动 clashrenew 程序**
@@ -72,13 +73,30 @@ systemctl --user status clashrenew.service
 这样用户自定义服务就可以运行起来了
 
 PS:ExecStartPre=/bin/sleep 20 代表延迟20秒，也可以修改clash的服务,使其延迟启动（如果你是无线链接）
+
+本人 clash.service 举例！（适用于启动成功但io超时）
+```
+[Unit]
+Description=A rule based proxy in Go.
+After=network-online.target
+
+[Service]
+Type=exec
+Restart=on-abort
+ExecStart=/usr/bin/clash
+ExecStartPre=/bin/sleep 15
+
+[Install]
+WantedBy=default.target
+```
+
 Ps:至于 network ，见https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/systemd-network-targets-and-services_configuring-and-managing-networking
 
 *部分参考此教程*
 https://blog.linioi.com/posts/clash-on-arch/
 
 
-
+重载配置 ```systemctl --user daemon-reload```
 
 
 ### 程序配置文件示例

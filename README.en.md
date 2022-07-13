@@ -3,7 +3,7 @@
 Linux clash or crash-meta configuration-config.yaml automatically updates the small script, please audit the code before use.
 
 
-**The user is responsible for the consequences of using this item.**
+**The user is responsible for the consequences of using this item. **
 
 
 ## Install
@@ -22,7 +22,7 @@ After cloning the project, please move the files to the ````～/```` (HOME) dire
 
 -------
 
-It's best not to use ```.zshrc``` or ```.bashrc```, it will cause the problem of executing when the terminal is opened...
+It's best not to use ```.zshrc``` or ```.bashrc``` , it will cause the problem of executing when the terminal is opened...
 
 **Run as follows to automatically start crash**
 ````
@@ -50,16 +50,17 @@ sudo vim clashrenew.service
 ````
 [Unit]
 Description=clashRenew
-After=network.target
+After=network-online.target
 
 [Service]
 Type=simple
 Restart=on-abort
-ExecStart=sh usr/local/bin/cron.sh
-ExecStartPre=/bin/sleep 20
+ExecStart=sh /usr/local/bin/cron.sh
+ExecStartPre=/bin/sleep 10
 
 [Install]
 WantedBy=default.target
+
 ````
 
 **Start clashrenew program**
@@ -71,12 +72,31 @@ systemctl --user status clashrenew.service
 
 In this way, the user-defined service can be run.
 
+PS: ExecStartPre=/bin/sleep 20 represents a delay of 20 seconds, you can also modify the crash service to delay the start (if you are a wireless link)
+
+I clash.service for example! (applicable to successful startup but io timeout)
+````
+[Unit]
+Description=A rule based proxy in Go.
+After=network-online.target
+
+[Service]
+Type=exec
+Restart=on-abort
+ExecStart=/usr/bin/clash
+ExecStartPre=/bin/sleep 15
+
+[Install]
+WantedBy=default.target
+````
+
+Ps: As for network , see https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/systemd-network-targets-and-services_configuring-and-managing-networking
 
 *Partial reference to this tutorial*
 https://blog.linioi.com/posts/clash-on-arch/
 
 
-
+Reload configuration ```systemctl --user daemon-reload```
 
 
 ### Program configuration file example
