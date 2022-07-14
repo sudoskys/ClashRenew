@@ -3,7 +3,13 @@
 Linux clash或clash-meta 配置-config.yaml 自动更新小脚本，使用前请审计代码。
 
 
-**使用本项目造成的后果需使用者负责。**
+Ps: 你也可以使用 Clash proxy-provider ，不过不如分开隔离更新稳定。
+
+proxy-provider直接使用http类型订阅源时，URL如果无法访问，此时Clash无法启动。
+
+
+
+**使用本项目造成的一切后果需使用者负责。**
 
 
 ## 安装
@@ -89,6 +95,8 @@ ExecStartPre=/bin/sleep 15
 [Install]
 WantedBy=default.target
 ```
+
+**注意： ```After=network-online.target``` 有适配问题，请注意！**
 
 Ps:至于 network ，见https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/systemd-network-targets-and-services_configuring-and-managing-networking
 

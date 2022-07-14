@@ -3,7 +3,13 @@
 Linux clash or crash-meta configuration-config.yaml automatically updates the small script, please audit the code before use.
 
 
-**The user is responsible for the consequences of using this item. **
+Ps: You can also use Clash proxy-provider, but it is better to isolate and update stable separately.
+
+When the proxy-provider directly uses the http type to subscribe to the source, if the URL cannot be accessed, Clash cannot be started at this time.
+
+
+
+**Users are responsible for all consequences of using this project.**
 
 
 ## Install
@@ -22,7 +28,7 @@ After cloning the project, please move the files to the ````～/```` (HOME) dire
 
 -------
 
-It's best not to use ```.zshrc``` or ```.bashrc``` , it will cause the problem of executing when the terminal is opened...
+It's best not to use ```.zshrc``` or ```.bashrc```, it will cause the problem of executing when the terminal is opened...
 
 **Run as follows to automatically start crash**
 ````
@@ -89,6 +95,8 @@ ExecStartPre=/bin/sleep 15
 [Install]
 WantedBy=default.target
 ````
+
+**Note: ```After=network-online.target``` has adaptation problems, please pay attention!**
 
 Ps: As for network , see https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/systemd-network-targets-and-services_configuring-and-managing-networking
 
