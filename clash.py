@@ -83,6 +83,7 @@ except:
 else:
     content = f.read()
     f.close()
+    time.sleep(15)
     App(content).run()
 
 
