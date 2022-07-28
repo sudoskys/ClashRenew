@@ -1,6 +1,6 @@
 [Unit]
 Description=clashRenew
-After=network-online.target
+After=network.target NetworkManager.service systemd-networkd.service iwd.service
 
 [Service]
 Type=simple
