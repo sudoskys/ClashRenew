@@ -127,3 +127,8 @@ content:
 
 
 编辑 python 脚本，按照注释配置 配置文件名称 和 数据目录。
+
+#### 无障碍投喂
+
+[![s](https://img.shields.io/badge/Become-sponsor-DB94A2)](https://dun.mianbaoduo.com/@Sky0717)
+
