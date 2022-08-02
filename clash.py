@@ -1,8 +1,8 @@
 # encoding: utf-8
 # auto clash config file renew prog
 
-# config?
-Name="randomname.yaml"
+# config?You need to fill in the configuration file path
+Name="RewnewConfig.yaml"
 
 #data
 Folder="Clash"
@@ -45,24 +45,24 @@ class App(object):
        try:
           r=requests.get(B[0])
           r.raise_for_status()  #如果不是200，产生异常requests.HTTPError
-          r.encoding=r.apparent_encoding
+          r.encoding='utf-8'
           rpath=self.Cpath+'/'+str(A)
           if not os.path.exists(rpath):
             os.makedirs(rpath)
           if len(r.text)>500:
-            with open(rpath +"/"+time.strftime("%Y%m%d%H%M%S")+'.yaml', 'w+') as f:
+            with open(rpath +"/"+time.strftime("%Y%m%d%H%M%S")+'.yaml', 'w+',encoding='utf-8') as f:
                 f.write(r.text)
                 f.flush()
                 os.fsync(f.fileno())
           else:
             raise ValueError("Content less than 500 words, skip for safety")
        except Exception as e:
-          print("Error Request..."+str(e))
+          print("Error occur..."+str(e))
        else:
           self.count.append(A)
           if A == self.target:
              try:
-                with open(os.getcwd() +"/.config/clash/config.yaml", 'w+') as f:
+                with open(os.getcwd() +"/.config/clash/config.yaml", 'w+',encoding='utf-8') as f:
                    f.write(r.text)
                    f.flush()
                    os.fsync(f.fileno())
@@ -72,7 +72,7 @@ class App(object):
    def Finally(self):
        print("Update completed-"+time.strftime("%Y-%m-%d %H:%M:%S")+" Total:"+str(len(self.content)) + " ,Succesful Renew:"+str(len(self.count)))
        if self.aR:
-          print("The running configuration file has been replaced ,using"+self.target)
+          print("The running configuration file has been replaced ,use:"+self.target)
 
 
 # main
@@ -83,7 +83,7 @@ except:
 else:
     content = f.read()
     f.close()
-    time.sleep(15)
+    time.sleep(10)
     App(content).run()
 
 
