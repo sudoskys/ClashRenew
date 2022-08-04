@@ -7,7 +7,6 @@ Name="RewnewConfig.yaml"
 #data
 Folder="Clash"
 
-
 import os
 import requests
 import yaml
@@ -26,6 +25,7 @@ class App(object):
          self.aR=self.c.get('RenewConfig')
          self.target=self.c.get('RenewTargetKey')
          self.content=self.c.get("content")
+         self.NotifyOrNot=self.c.get("RenewNotify")
        else:
          self.c = False
        self.Cpath=os.getcwd()+ "/" +Folder
@@ -33,7 +33,13 @@ class App(object):
        if not folder:
           os.makedirs(self.Cpath)
           print("Create New Folder:" +self.Cpath)
-
+   def sendNotify(self,infoo,prt=False):
+      print(infoo)
+      if self.NotifyOrNot and not prt:
+         import notify2
+         notify2.init('ClashRenew')
+         n = notify2.Notification('ClashRenew', infoo)
+         n.show()
    def run(self):
        if all([self.c,self.aR,self.target,self.content]):
           for k,v in self.content.items():
@@ -57,7 +63,7 @@ class App(object):
           else:
             raise ValueError("Content less than 500 words, skip for safety")
        except Exception as e:
-          print("Error occur..."+str(e))
+          self.sendNotify("Error occur:\n"+str(e))
        else:
           self.count.append(A)
           if A == self.target:
@@ -67,24 +73,28 @@ class App(object):
                    f.flush()
                    os.fsync(f.fileno())
              except Exception as e:
-                print("Error updating run file "+str(e))
+                self.sendNotify("Error updating run file "+str(e))
 
    def Finally(self):
-       print("Update completed-"+time.strftime("%Y-%m-%d %H:%M:%S")+" Total:"+str(len(self.content)) + " ,Succesful Renew:"+str(len(self.count)))
+       info=("Update completed-"+time.strftime("%Y-%m-%d %H:%M:%S")+" Total:"+str(len(self.content)) + " ,Succesful Renew:"+str(len(self.count)))
+       #self.sendNotify(info,prt=True)
        if self.aR:
-          print("The running configuration file has been replaced ,use:"+self.target)
+          info2=("The running configuration file has been replaced ,use:"+self.target)
+          infos="Use config:"+targetPath+"\n"+info+"\n"+info2
+       else:
+          infos="Use config:"+targetPath+"\n"+info
+       self.sendNotify(infos)
 
 
 # main
 try:
     f = open(targetPath, 'r')
 except:
-    print("IO Error： Pleas Make sure that file really exist!")
+    self.sendNotify(infos)
 else:
     content = f.read()
     f.close()
-    time.sleep(10)
+    time.sleep(12)
     App(content).run()
-
 
 

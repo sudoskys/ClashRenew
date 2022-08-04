@@ -18,9 +18,11 @@ proxy-provider直接使用http类型订阅源时，URL如果无法访问，此�
 
 #### 依赖
 
-```pip install pyyaml==5.4.1```
+```pip install requirements.txt```
 
->因为 yaml 库的兼容问题，需要使用 5.4.1，如果不是可以使用 ```pip unstall```
+
+
+>因为 yaml 库的兼容问题，配置写了需要使用 5.4.1
 
 
 
@@ -112,6 +114,8 @@ https://blog.linioi.com/posts/clash-on-arch/
 注意空格
 ```
 RenewConfig: True
+RenewNotify: True  
+# 如果不想被桌面通知，上面这行请填 False
 RenewTargetKey: cloud22
 content:
    cloud1:

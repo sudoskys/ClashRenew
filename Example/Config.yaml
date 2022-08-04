@@ -1,0 +1,17 @@
+RenewConfig: True
+RenewNotify: True
+RenewTargetKey: all
+# recommand:sub.pet
+content:
+   all:
+       - https://subscribe.cctv.rip/
+   clouds:
+       - https://subscribe.cctv.rip/
+   kele:
+       - https://subscribe.cctv.rip/
+   fishport:
+       - https://subscribe.cctv.rip/
+   whatsup:
+      - https://subscribe.cctv.rip/
+
+

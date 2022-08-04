@@ -18,9 +18,10 @@ After cloning the project, please move the files to the ````～/```` (HOME) dire
 
 #### dependencies
 
-```pip install pyyaml==5.4.1```
+```pip install requirements.txt```
 
->Because of the compatibility of the yaml library, you need to use 5.4.1, if not you can use ```pip uninstall```
+
+>Because of the compatibility problem of the yaml library, the configuration needs to use 5.4.1
 
 
 
@@ -81,6 +82,7 @@ In this way, the user-defined service can be run.
 PS: ExecStartPre=/bin/sleep 20 represents a delay of 20 seconds, you can also modify the crash service to delay the start (if you are a wireless link)
 
 I clash.service for example! (applicable to successful startup but io timeout)
+
 ````
 [Unit]
 Description=A rule based proxy in Go.
@@ -110,8 +112,11 @@ Reload configuration ```systemctl --user daemon-reload```
 ### Program configuration file example
 
 Note the spaces
+
 ````
 RenewConfig: True
+RenewNotify: True
+# If you don't want to be notified, please fill False in the above line
 RenewTargetKey: cloud22
 content:
    cloud1:
@@ -127,3 +132,7 @@ content:
 
 
 Edit the python script and configure the config file name and data directory as noted.
+
+#### Barrier-free feeding
+
+[![s](https://img.shields.io/badge/Become-sponsor-DB94A2)](https://dun.mianbaoduo.com/@Sky0717)
