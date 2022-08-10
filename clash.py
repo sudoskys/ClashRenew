@@ -89,8 +89,8 @@ class App(object):
 # main
 try:
     f = open(targetPath, 'r')
-except:
-    self.sendNotify(infos)
+except Exception as e:
+    App("").sendNotify(e)
 else:
     content = f.read()
     f.close()
