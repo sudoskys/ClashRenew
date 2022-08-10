@@ -1,15 +1,15 @@
 # ClashRenew
 
-Linux clash或clash-meta 配置-config.yaml 自动更新小脚本，使用前请审计代码。
+自动备份配置列表中网址的数据并写入特定文件。
+
+在 **不采用proxy provider的情况下** 实现 Linux clash或clash-meta 配置-config.yaml 的自动更新。
+
+使用前请先看一下代码。
 
 
-Ps: 你也可以使用 Clash proxy-provider ，不过不如分开隔离更新稳定。
-
-proxy-provider直接使用http类型订阅源时，URL如果无法访问，此时Clash无法启动。
+Ps: 你也可以使用 Clash proxy-provider
 
 
-
-**使用本项目造成的一切后果需使用者负责。**
 
 
 ## 安装
@@ -136,3 +136,4 @@ content:
 
 [![s](https://img.shields.io/badge/Become-sponsor-DB94A2)](https://dun.mianbaoduo.com/@Sky0717)
 
+**使用本项目造成的一切后果需使用者负责。**
