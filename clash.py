@@ -48,6 +48,7 @@ class App(object):
        else:
           print("Error: Argument missing or invalid")
    def Worker(self, A, B):
+       time.sleep(1)
        try:
           r=requests.get(B[0])
           r.raise_for_status()  #如果不是200，产生异常requests.HTTPError
@@ -63,7 +64,10 @@ class App(object):
           else:
             raise ValueError("Content less than 500 words, skip for safety")
        except Exception as e:
+          if "Connection reset by peer" in str(e):
+             e="请求频繁被拒:"+str(e)
           self.sendNotify("Error occur:\n"+str(e))
+
        else:
           self.count.append(A)
           if A == self.target:
@@ -89,8 +93,8 @@ class App(object):
 # main
 try:
     f = open(targetPath, 'r')
-except Exception as e:
-    App("").sendNotify(e)
+except:
+    self.sendNotify(infos)
 else:
     content = f.read()
     f.close()
