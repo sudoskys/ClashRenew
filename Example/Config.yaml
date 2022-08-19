@@ -1,6 +1,7 @@
-RenewConfig: True
-RenewNotify: True
-RenewTargetKey: all
+RenewConfig: True  # 自动更新运行中的配置
+RenewNotify: True  # 桌面通知
+Overlaycontent: ""
+RenewTargetKey: all # 指定使用哪一个更新
 # recommand:sub.pet
 content:
    all:

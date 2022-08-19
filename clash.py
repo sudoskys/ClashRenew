@@ -1,11 +1,12 @@
 # encoding: utf-8
 # auto clash config file renew prog
 
-# config?You need to fill in the configuration file path
-Name="RewnewConfig.yaml"
+# config?
+Name="Config114514.yaml"
 
 #data
 Folder="Clash"
+
 
 import os
 import requests
@@ -26,6 +27,7 @@ class App(object):
          self.target=self.c.get('RenewTargetKey')
          self.content=self.c.get("content")
          self.NotifyOrNot=self.c.get("RenewNotify")
+         self.code=self.c.get("Overlaycontent")
        else:
          self.c = False
        self.Cpath=os.getcwd()+ "/" +Folder
@@ -73,7 +75,7 @@ class App(object):
           if A == self.target:
              try:
                 with open(os.getcwd() +"/.config/clash/config.yaml", 'w+',encoding='utf-8') as f:
-                   f.write(r.text)
+                   f.write(self.code+"\n"+r.text)
                    f.flush()
                    os.fsync(f.fileno())
              except Exception as e:
@@ -100,5 +102,6 @@ else:
     f.close()
     time.sleep(12)
     App(content).run()
+
 
 

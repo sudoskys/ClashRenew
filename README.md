@@ -113,8 +113,9 @@ https://blog.linioi.com/posts/clash-on-arch/
 
 注意空格
 ```
-RenewConfig: True
-RenewNotify: True  
+RenewConfig: True  # 自动更新运行中的配置
+RenewNotify: True  # 桌面通知
+Overlaycontent: ""  # 追加内容，比如 `external-ui`
 # 如果不想被桌面通知，上面这行请填 False
 RenewTargetKey: cloud22
 content:
