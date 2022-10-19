@@ -1,2 +1,4 @@
-pyyaml==5.4.1
+pyyaml
 notify2
+requests
+dbus-python
