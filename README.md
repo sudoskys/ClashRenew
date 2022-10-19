@@ -26,7 +26,9 @@ pip install requirements.txt
 
 >因为 yaml 库的兼容问题，配置写了需要使用 5.4.1
 
+### 覆写
 
+在脚本数据目录（默认为 `Clash`） 下有一个 `.template.yaml` ，里面写东西就能合并进去
 
 ### 配置开机自动
 
