@@ -24,7 +24,7 @@ pip install requirements.txt
 
 
 
->因为 yaml 库的兼容问题，配置写了需要使用 5.4.1
+>因为 yaml 库的兼容问题，配置写了需要使用 5.4.1 以上的库
 
 ### 覆写
 
