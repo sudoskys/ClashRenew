@@ -18,7 +18,9 @@ Ps: 你也可以使用 Clash proxy-provider
 
 #### 依赖
 
-```pip install requirements.txt```
+```bash
+pip install requirements.txt
+```
 
 
 
@@ -82,7 +84,8 @@ systemctl --user status clashrenew.service
 
 PS:ExecStartPre=/bin/sleep 20 代表延迟20秒，也可以修改clash的服务,使其延迟启动（如果你是无线链接）
 
-本人 clash.service 举例！（适用于启动成功但io超时）
+`clash.service` 举例 （适用于启动成功但io超时）
+
 ```
 [Unit]
 Description=A rule based proxy in Go.
@@ -97,6 +100,8 @@ ExecStartPre=/bin/sleep 15
 [Install]
 WantedBy=default.target
 ```
+
+这里可以换成 `clash-meta`
 
 **注意： ```After=network-online.target``` 有适配问题，请注意！**
 
