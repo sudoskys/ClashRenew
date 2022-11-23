@@ -108,8 +108,9 @@ Ps:至于 network ，见 [这里](https://access.redhat.com/documentation/zh-cn/
 ```yaml
 RenewConfig: True  # 自动更新运行中的配置
 RenewNotify: True  # 桌面通知
-Overlaycontent: ""  # 追加内容，比如 `external-ui`
 # 如果不想被桌面通知，上面这行请填 False
+Overlaycontent: ""  # 追加内容，比如 `external-ui`
+
 RenewTargetKey: cloud22
 content:
    cloud1:
